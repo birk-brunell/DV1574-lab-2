@@ -1,9 +1,3 @@
-# Kod skriven av Birk Brunell
-# Mastermind labb 2
-# Estimerad tid: 4h
-# Faktisk tid: 5h
-# Antal möjliga kombinationer = 6^4 = 1296
-
 import master_mind_GUI as mmg
 import random
 
@@ -16,7 +10,7 @@ def solution_generator():
 
     return solution
 
-    # skapar en dictionary för att hålla koll på redan matchade index
+
 def correct_checker(player_guess, solution):
     """Checks how many direct matches that can be found 'correct_place'
     and how many indirect matches 'correct_amount' that can be found.
@@ -25,10 +19,6 @@ def correct_checker(player_guess, solution):
     correct_place = 0
     wrong_place = 0
     matches_index = {}
-
-    # Debugg
-    print(player_guess)
-    print(solution)
 
     # Kollar rätt tal på rätt plats
     for index_pg in range(len(player_guess)):
@@ -46,7 +36,7 @@ def correct_checker(player_guess, solution):
 
     return correct_place, wrong_place
 
-# Definerar några variablar och startar det grafiska interfacet
+
 row_index = 0
 nr_of_guesses = 0
 win = "Looser"
@@ -54,7 +44,6 @@ win = "Looser"
 solution = solution_generator()
 window = mmg.create_GUI()
 
-# Main loopen
 while nr_of_guesses < 6 and win == "Looser":
 
     player_guess = mmg.make_guess(row_index, window)
@@ -63,9 +52,6 @@ while nr_of_guesses < 6 and win == "Looser":
     correct_place_wrong_place = correct_checker(player_guess, solution)
     correct_place = correct_place_wrong_place[0]
     wrong_place = correct_place_wrong_place[1]
-
-    # Debugg
-    print(correct_place, wrong_place)
 
     mmg.peg_feedback(row_index, correct_place, wrong_place, window)
     row_index += 1
